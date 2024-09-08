@@ -7,15 +7,15 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug executable 'valjson'",
+            "name": "Debug executable 'valoard'",
             "cargo": {
                 "args": [
                     "build",
-                    "--bin=valjson",
-                    "--package=valjson"
+                    "--bin=valoard",
+                    "--package=valoard"
                 ],
                 "filter": {
-                    "name": "valjson",
+                    "name": "valoard",
                     "kind": "bin"
                 }
             },
@@ -25,16 +25,16 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug unit tests in executable 'valjson'",
+            "name": "Debug unit tests in executable 'valoard'",
             "cargo": {
                 "args": [
                     "test",
                     "--no-run",
-                    "--bin=valjson",
-                    "--package=valjson"
+                    "--bin=valoard",
+                    "--package=valoard"
                 ],
                 "filter": {
-                    "name": "valjson",
+                    "name": "valoard",
                     "kind": "bin"
                 }
             },
