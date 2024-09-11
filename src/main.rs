@@ -3,13 +3,19 @@
 
 mod clipboard_content;
 mod content_view;
+mod help_text_view;
 mod select_content_view;
 
 use clipboard_content::get_clipboard_content;
 use content_view::build_content_view;
 use cursive::align::HAlign;
-use cursive::views::{Dialog, DummyView, LinearLayout, TextView};
+use cursive::backend::Dummy;
+use cursive::theme::{BaseColor, Color};
+use cursive::utils::markup::StyledString;
+use cursive::views::{CircularFocus, Dialog, DummyView, LinearLayout, TextView};
+use cursive::With;
 use cursive::{traits::Resizable, Cursive};
+use help_text_view::build_help_text_view;
 use select_content_view::build_select_content_view;
 
 fn main() {
@@ -26,10 +32,16 @@ fn main() {
     // We'll create a dialog with a TextView serving as a title
     siv.add_fullscreen_layer(
         Dialog::around(
-            LinearLayout::horizontal()
-                .child(select_content_view.full_height().min_width(30))
-                .child(DummyView.fixed_width(3))
-                .child(content_view.full_width()),
+            LinearLayout::vertical()
+                .child(
+                    LinearLayout::horizontal()
+                        .child(select_content_view.min_width(30))
+                        .child(DummyView.fixed_width(3))
+                        .child(content_view.full_width())
+                        .full_height(),
+                )
+                .child(DummyView)
+                .child(build_help_text_view().h_align(HAlign::Center)),
         )
         .title("Valoard")
         .h_align(HAlign::Center)
