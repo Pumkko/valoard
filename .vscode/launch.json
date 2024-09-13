@@ -6,21 +6,9 @@
     "configurations": [
         {
             "type": "lldb",
-            "request": "launch",
-            "name": "Debug executable 'valoard'",
-            "cargo": {
-                "args": [
-                    "build",
-                    "--bin=valoard",
-                    "--package=valoard"
-                ],
-                "filter": {
-                    "name": "valoard",
-                    "kind": "bin"
-                }
-            },
-            "args": [],
-            "cwd": "${workspaceFolder}"
+            "name": "Attach to valoard",
+            "request": "attach",
+            "program": "../target/debug/valoard"
         },
         {
             "type": "lldb",
